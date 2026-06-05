@@ -24,7 +24,7 @@ Import this collection to explore and test all Cadlens API endpoints directly fr
 |----------|-------------|
 | `baseUrl` | API base URL (`https://api.cadlens.co`) |
 | `jwt` | JWT token from login (set automatically by the auth request) |
-| `apiKey` | Your Cadlens API key — paste your `cad_xxx` key here |
+| `apiKey` | Your Cadlens API key — paste your `cadl_xxx` key here |
 | `jobId` | Populated automatically after a parse request |
 | `keyId` | Populated automatically after creating an API key |
 
@@ -33,7 +33,7 @@ Import this collection to explore and test all Cadlens API endpoints directly fr
 ## Quickstart Flow
 
 1. **Auth → Exchange OAuth code** — authenticate and get a JWT
-2. **Keys → Create API Key** — generate a `cad_xxx` API key; copy it to the `apiKey` variable
+2. **Keys → Create API Key** — generate a `cadl_xxx` API key; copy it to the `apiKey` variable
 3. **Parse → Upload CAD File** — upload a DWG/DXF file; `jobId` is saved automatically
 4. **Jobs → Get Job Status** — poll until `status` is `COMPLETED`
 5. **Jobs → Get Job Result** — retrieve `vectorJson`, `layersJson`, and `metadata`

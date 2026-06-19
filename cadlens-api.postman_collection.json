@@ -2,12 +2,12 @@
   "info": {
     "_postman_id": "98205492c0da112d3f1be05c10d9140318efe468",
     "name": "CADLens API",
-    "description": "Auto-generated Postman collection for the CADLens Node API. Maintained by the postman-agent — re-run whenever routes/validators/controllers change.\n\nQuickstart:\n1. Set `{{baseUrl}}` (defaults to http://localhost:3001).\n2. Complete OAuth via the `01 — OAuth (browser)` folder, then paste the JWT from the `#token=...` redirect fragment into `{{jwt}}`.\n3. Hit `POST /v1/keys` to mint an API key — its `key` and `id` are auto-saved to `{{apiKey}}` / `{{keyId}}`.\n4. Use `POST /v1/parse` to upload a DWG, DXF, DWF, DGN, DWFx, or PDF file — the returned `job_id` is auto-saved to `{{jobId}}`.",
+    "description": "Auto-generated Postman collection for the CADLens Node API. Maintained by the postman-agent \u2014 re-run whenever routes/validators/controllers change.\n\nQuickstart:\n1. Set `{{baseUrl}}` (defaults to http://localhost:3001).\n2. Complete OAuth via the `01 \u2014 OAuth (browser)` folder, then paste the JWT from the `#token=...` redirect fragment into `{{jwt}}`.\n3. Hit `POST /v1/keys` to mint an API key \u2014 its `key` and `id` are auto-saved to `{{apiKey}}` / `{{keyId}}`.\n4. Use `POST /v1/parse` to upload a DWG, DXF, DWF, DGN, DWFx, or PDF file \u2014 the returned `job_id` is auto-saved to `{{jobId}}`.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "00 — Public",
+      "name": "00 \u2014 Public",
       "description": "Unauthenticated health and JWKS endpoints.",
       "item": [
         {
@@ -27,7 +27,7 @@
                 "health"
               ]
             },
-            "description": "Liveness probe — returns `{ status: 'ok', db: 'ok' }` when MySQL is reachable."
+            "description": "Liveness probe \u2014 returns `{ status: 'ok', db: 'ok' }` when MySQL is reachable."
           },
           "response": []
         },
@@ -56,8 +56,8 @@
       ]
     },
     {
-      "name": "01 — OAuth (browser)",
-      "description": "OAuth start URLs (`GET /v1/auth/google`, `GET /v1/auth/github`) return a 302 to the provider — open them in a browser. After consent the provider calls the callback URL, which now returns JSON `{ token, user, profileComplete, isNewUser }` directly instead of a redirect fragment. Copy the `token` value and paste it into `{{jwt}}`.\n\nAlternatively, use the `POST .../exchange` endpoints from Postman directly: first obtain a `code` + `state` pair by following the browser flow as far as the provider redirect, then POST them here to receive the token without a browser.",
+      "name": "01 \u2014 OAuth (browser)",
+      "description": "OAuth start URLs (`GET /v1/auth/google`, `GET /v1/auth/github`) return a 302 to the provider \u2014 open them in a browser. After consent the provider calls the callback URL, which now returns JSON `{ token, user, profileComplete, isNewUser }` directly instead of a redirect fragment. Copy the `token` value and paste it into `{{jwt}}`.\n\nAlternatively, use the `POST .../exchange` endpoints from Postman directly: first obtain a `code` + `state` pair by following the browser flow as far as the provider redirect, then POST them here to receive the token without a browser.",
       "item": [
         {
           "name": "GET /v1/auth/google (start)",
@@ -78,7 +78,7 @@
                 "google"
               ]
             },
-            "description": "302 → Google consent screen. Open in browser; do NOT follow redirects in Postman."
+            "description": "302 \u2192 Google consent screen. Open in browser; do NOT follow redirects in Postman."
           },
           "response": []
         },
@@ -114,11 +114,11 @@
                 }
               ]
             },
-            "description": "Google redirects here after consent. Previously this endpoint issued a 302 with a `#token=...` fragment; it now returns JSON directly. Invoke from Postman only if you have a live `code`+`state` pair — each code is single-use and expires in ~60 s."
+            "description": "Google redirects here after consent. Previously this endpoint issued a 302 with a `#token=...` fragment; it now returns JSON directly. Invoke from Postman only if you have a live `code`+`state` pair \u2014 each code is single-use and expires in ~60 s."
           },
           "response": [
             {
-              "name": "200 OK — example",
+              "name": "200 OK \u2014 example",
               "status": "OK",
               "code": 200,
               "header": [
@@ -186,11 +186,11 @@
                 "exchange"
               ]
             },
-            "description": "POST equivalent of the Google callback. Accepts a JSON body with `code` (string, min 1) and `state` (string, min 1) — both validated by `oauthExchangeSchema`. Returns the same JSON shape as the GET callback. Useful for mobile / SPA flows that handle the redirect themselves and need to exchange the code server-side without a browser navigation."
+            "description": "POST equivalent of the Google callback. Accepts a JSON body with `code` (string, min 1) and `state` (string, min 1) \u2014 both validated by `oauthExchangeSchema`. Returns the same JSON shape as the GET callback. Useful for mobile / SPA flows that handle the redirect themselves and need to exchange the code server-side without a browser navigation."
           },
           "response": [
             {
-              "name": "200 OK — example",
+              "name": "200 OK \u2014 example",
               "status": "OK",
               "code": 200,
               "header": [
@@ -247,7 +247,7 @@
                 "github"
               ]
             },
-            "description": "302 → GitHub consent screen. Open in browser; do NOT follow redirects in Postman."
+            "description": "302 \u2192 GitHub consent screen. Open in browser; do NOT follow redirects in Postman."
           },
           "response": []
         },
@@ -283,11 +283,11 @@
                 }
               ]
             },
-            "description": "GitHub redirects here after consent. Previously this endpoint issued a 302 with a `#token=...` fragment; it now returns JSON directly. Invoke from Postman only if you have a live `code`+`state` pair — each code is single-use."
+            "description": "GitHub redirects here after consent. Previously this endpoint issued a 302 with a `#token=...` fragment; it now returns JSON directly. Invoke from Postman only if you have a live `code`+`state` pair \u2014 each code is single-use."
           },
           "response": [
             {
-              "name": "200 OK — example",
+              "name": "200 OK \u2014 example",
               "status": "OK",
               "code": 200,
               "header": [
@@ -355,11 +355,11 @@
                 "exchange"
               ]
             },
-            "description": "POST equivalent of the GitHub callback. Accepts a JSON body with `code` (string, min 1) and `state` (string, min 1) — both validated by `oauthExchangeSchema`. Returns the same JSON shape as the GET callback. Useful for mobile / SPA flows that handle the redirect themselves and need to exchange the code server-side without a browser navigation."
+            "description": "POST equivalent of the GitHub callback. Accepts a JSON body with `code` (string, min 1) and `state` (string, min 1) \u2014 both validated by `oauthExchangeSchema`. Returns the same JSON shape as the GET callback. Useful for mobile / SPA flows that handle the redirect themselves and need to exchange the code server-side without a browser navigation."
           },
           "response": [
             {
-              "name": "200 OK — example",
+              "name": "200 OK \u2014 example",
               "status": "OK",
               "code": 200,
               "header": [
@@ -416,7 +416,7 @@
                 "logout"
               ]
             },
-            "description": "Clears the OAuth nonce cookie. Stateless — JWT remains valid until expiry."
+            "description": "Clears the OAuth nonce cookie. Stateless \u2014 JWT remains valid until expiry."
           },
           "response": []
         },
@@ -453,7 +453,7 @@
       ]
     },
     {
-      "name": "02 — Profile",
+      "name": "02 \u2014 Profile",
       "description": "Authenticated user profile, usage summary, and invoice history (JWT). Required to satisfy onboarding gating.",
       "item": [
         {
@@ -521,7 +521,7 @@
                 "profile"
               ]
             },
-            "description": "Update profile. All fields are optional — see node/src/validators/profile.schema.ts for length and enum constraints."
+            "description": "Update profile. All fields are optional \u2014 see node/src/validators/profile.schema.ts for length and enum constraints."
           },
           "response": []
         },
@@ -588,8 +588,8 @@
       ]
     },
     {
-      "name": "03 — API Keys",
-      "description": "Manage API keys (JWT). The plaintext `key` is returned only on creation — store it in `{{apiKey}}` (auto-saved by the test script).",
+      "name": "03 \u2014 API Keys",
+      "description": "Manage API keys (JWT). The plaintext `key` is returned only on creation \u2014 store it in `{{apiKey}}` (auto-saved by the test script).",
       "item": [
         {
           "name": "GET /v1/keys",
@@ -665,7 +665,7 @@
                 "keys"
               ]
             },
-            "description": "Create a new API key. Response includes `id`, `name`, `keyPrefix`, `key` (plaintext, shown once), `createdAt`. The test script saves `key`→`{{apiKey}}` and `id`→`{{keyId}}`."
+            "description": "Create a new API key. Response includes `id`, `name`, `keyPrefix`, `key` (plaintext, shown once), `createdAt`. The test script saves `key`\u2192`{{apiKey}}` and `id`\u2192`{{keyId}}`."
           },
           "response": []
         },
@@ -708,8 +708,8 @@
       ]
     },
     {
-      "name": "04 — Parse",
-      "description": "Submit a CAD file (DWG, DXF, DWF, DGN, DWFx, or PDF) for parsing. Authenticated with the API key bearer token. Use `mode=async` (default) to return immediately with a `job_id`; use `mode=sync` to long-poll up to 60 s — responds 200 with the full result if the worker finishes in time, or 202 + `job_id` on timeout.",
+      "name": "04 \u2014 Parse",
+      "description": "Submit a CAD file (DWG, DXF, DWF, DGN, DWFx, or PDF) for parsing. Authenticated with the API key bearer token. Use `mode=async` (default) to return immediately with a `job_id`; use `mode=sync` to long-poll up to 60 s \u2014 responds 200 with the full result if the worker finishes in time, or 202 + `job_id` on timeout.",
       "item": [
         {
           "name": "POST /v1/parse",
@@ -750,13 +750,13 @@
                   "key": "webhookUrl",
                   "type": "text",
                   "value": "",
-                  "description": "Optional. Must be a valid URL — receives a POST when the job completes."
+                  "description": "Optional. Must be a valid URL \u2014 receives a POST when the job completes."
                 },
                 {
                   "key": "mode",
                   "type": "text",
                   "value": "async",
-                  "description": "Optional. `async` (default) — returns 202 + job_id immediately. `sync` — long-polls up to 60 s; returns 200 with full result body if the worker finishes in time, otherwise 202 + job_id."
+                  "description": "Optional. `async` (default) \u2014 returns 202 + job_id immediately. `sync` \u2014 long-polls up to 60 s; returns 200 with full result body if the worker finishes in time, otherwise 202 + job_id."
                 }
               ]
             },
@@ -770,15 +770,15 @@
                 "parse"
               ]
             },
-            "description": "Multipart upload. Default `mode=async`: returns 202 `{ job_id, status, fileName, fileSize, createdAt }`. With `mode=sync`: returns 200 `{ job_id, status, fileName, fileSize, createdAt, completedAt, vectorJson, layersJson, metadata, imageUrl }` if the worker finishes within ~60 s, otherwise 202 `{ job_id, status, fileName, fileSize, createdAt, message }`. The test script saves `job_id`→`{{jobId}}` for both response shapes."
+            "description": "Multipart upload. Default `mode=async`: returns 202 `{ job_id, status, fileName, fileSize, createdAt }`. With `mode=sync`: returns 200 with the full result shape (see `GET /v1/jobs/:jobId/result`) if the worker finishes within ~60 s, otherwise 202 `{ job_id, status, fileName, fileSize, createdAt, message }`. The test script saves `job_id`\u2192`{{jobId}}` for both response shapes."
           },
           "response": []
         }
       ]
     },
     {
-      "name": "05 — Jobs",
-      "description": "Poll job status and fetch results. All endpoints authenticated with the API key bearer token.\n\n`GET /v1/jobs` and `GET /v1/jobs/:jobId` now both include `imageUrl: string | null` in every job object — a presigned S3 URL (1-hour TTL) for the PNG preview when `status === 'COMPLETED'`, otherwise `null`.",
+      "name": "05 \u2014 Jobs",
+      "description": "Poll job status and fetch results. All endpoints authenticated with the API key bearer token.\n\n`GET /v1/jobs` and `GET /v1/jobs/:jobId` now both include `imageUrl: string | null` in every job object \u2014 a presigned S3 URL (1-hour TTL) for the PNG preview when `status === 'COMPLETED'`, otherwise `null`.",
       "item": [
         {
           "name": "GET /v1/jobs",
@@ -805,7 +805,7 @@
                 "jobs"
               ]
             },
-            "description": "List the API-key owner's jobs. Returns `{ jobs: [<job>] }` where each job object now includes an extra top-level field `imageUrl: string | null` — a presigned S3 URL (1-hour TTL) when `status === 'COMPLETED'` and a result exists, otherwise `null`."
+            "description": "List the API-key owner's jobs. Returns `{ jobs: [<job>] }` where each job object now includes an extra top-level field `imageUrl: string | null` \u2014 a presigned S3 URL (1-hour TTL) when `status === 'COMPLETED'` and a result exists, otherwise `null`."
           },
           "response": []
         },
@@ -841,7 +841,7 @@
                 }
               ]
             },
-            "description": "Fetch a single job's status and metadata. The response is the job object directly (not wrapped) and now includes an extra top-level field `imageUrl: string | null` — a presigned S3 URL (1-hour TTL) when `status === 'COMPLETED'` and a result exists, otherwise `null`."
+            "description": "Fetch a single job's status and metadata. The response is the job object directly (not wrapped) and now includes an extra top-level field `imageUrl: string | null` \u2014 a presigned S3 URL (1-hour TTL) when `status === 'COMPLETED'` and a result exists, otherwise `null`."
           },
           "response": []
         },
@@ -878,7 +878,7 @@
                 }
               ]
             },
-            "description": "Returns the parsed vector JSON, layers, and metadata once the job is complete."
+            "description": "Returns the full parsed result once the job is complete.\n\nResponse shape:\n```json\n{\n  \"jobId\": \"job_lH9k2c\",\n  \"status\": \"COMPLETED\",\n  \"file\": { \"name\": \"drawing.dwg\", \"format\": \"DWG\", \"version\": \"AC1021\", \"units\": \"mm\" },\n  \"summary\": { \"totalSheets\": 1, \"totalEntities\": 142, \"totalLayers\": 8, \"truncated\": false },\n  \"sheets\": [\n    {\n      \"name\": \"Model\", \"index\": 0,\n      \"imageUrl\": \"https://s3.amazonaws.com/.../preview-0.png?...\",\n      \"entityCount\": 142, \"layerCount\": 8,\n      \"boundingBox\": { \"minX\": 0, \"minY\": 0, \"maxX\": 500, \"maxY\": 400, \"width\": 500, \"height\": 400 },\n      \"area\": 200000, \"perimeter\": 1800,\n      \"layers\": [{ \"name\": \"0\", \"color\": 7, \"colorHex\": \"#FFFFFF\", \"lineType\": \"CONTINUOUS\", \"isVisible\": true, \"entityCount\": 142 }],\n      \"entities\": [{ \"type\": \"LINE\", \"layer\": \"0\", \"layout\": \"Model\", \"start\": {\"x\": 0, \"y\": 0}, \"end\": {\"x\": 100, \"y\": 100} }]\n    }\n  ],\n  \"metadata\": { \"filename\": \"drawing.dwg\", \"format\": \"DWG\", \"units\": \"mm\" },\n  \"imageUrl\": \"https://s3.amazonaws.com/.../preview-0.png?...\",\n  \"imageUrls\": [\"https://s3.amazonaws.com/.../preview-0.png?...\"]\n}\n```\n`imageUrl` is the first-sheet presigned S3 URL (1-hour TTL, kept for backward compat). `imageUrls` contains one URL per sheet. `entityCount` and `layerCount` are per-sheet fields inside each `sheets[]` entry. Top-level `summary.totalEntities` and `summary.totalLayers` give the drawing-wide totals."
           },
           "response": []
         },
@@ -915,7 +915,7 @@
                 }
               ]
             },
-            "description": "Returns a presigned S3 URL for the PNG preview."
+            "description": "Returns presigned S3 URLs for all PNG previews. Response: `{ imageUrl, imageUrls }` where `imageUrl` is the first sheet (backward-compat) and `imageUrls` is an array with one URL per sheet (1-hour TTL)."
           },
           "response": []
         },
@@ -958,8 +958,8 @@
       ]
     },
     {
-      "name": "06 — Billing",
-      "description": "Stripe-backed billing. The webhook entry is reference-only — Stripe is the real caller and signs requests with `Stripe-Signature`.\n\n**CADLens job webhook** (sent to the customer's `webhookUrl` on job completion):\n```json\n{\n  \"eventId\": \"<uuid>\",\n  \"sequence\": 1,\n  \"event\": \"job.completed\",\n  \"jobId\": \"<uuid>\",\n  \"status\": \"COMPLETED\",\n  \"timestamp\": \"2026-05-15T12:00:00.000Z\",\n  \"result\": {\n    \"entityCount\": 142,\n    \"layerCount\": 8,\n    \"imageUrl\": \"https://s3…/preview.png?X-Amz-Expires=86400\",\n    \"vectorJson\": [ /* parsed entities array — inline */ ],\n    \"layersJson\": [ /* layer metadata — inline */ ],\n    \"metadata\": { /* drawing metadata — inline */ }\n  }\n}\n```\nNote: `resultUrl` (formerly a signed S3 URL to vector.json) has been removed. The vector data, layer metadata, and drawing metadata are now delivered inline in `vectorJson`, `layersJson`, and `metadata` respectively. `imageUrl` is a presigned S3 URL with a 24-hour TTL.",
+      "name": "06 \u2014 Billing",
+      "description": "Stripe-backed billing. The webhook entry is reference-only \u2014 Stripe is the real caller and signs requests with `Stripe-Signature`.\n\n**CADLens job webhook** (sent to the customer's `webhookUrl` on job completion):\n```json\n{\n  \"eventId\": \"<uuid>\",\n  \"sequence\": 1,\n  \"event\": \"job.completed\",\n  \"jobId\": \"<uuid>\",\n  \"status\": \"COMPLETED\",\n  \"timestamp\": \"2026-05-15T12:00:00.000Z\",\n  \"result\": {\n    \"imageUrl\": \"https://s3.amazonaws.com/.../preview-0.png?...\",\n    \"imageUrls\": [\"https://s3.amazonaws.com/.../preview-0.png?...\", \"https://s3.amazonaws.com/.../preview-1.png?...\"],\n    \"file\": { \"name\": \"drawing.dwg\", \"format\": \"DWG\", \"version\": \"AC1021\", \"units\": \"mm\" },\n    \"summary\": { \"totalSheets\": 1, \"totalEntities\": 142, \"totalLayers\": 8, \"truncated\": false },\n    \"sheets\": [\n      {\n        \"name\": \"Model\", \"index\": 0,\n        \"imageUrl\": \"https://s3.amazonaws.com/.../preview-0.png?...\",\n        \"entityCount\": 142, \"layerCount\": 8,\n        \"boundingBox\": { \"minX\": 0, \"minY\": 0, \"maxX\": 500, \"maxY\": 400, \"width\": 500, \"height\": 400 },\n        \"area\": 200000, \"perimeter\": 1800,\n        \"layers\": [{ \"name\": \"0\", \"color\": 7, \"colorHex\": \"#FFFFFF\", \"lineType\": \"CONTINUOUS\", \"isVisible\": true, \"entityCount\": 142 }],\n        \"entities\": [{ \"type\": \"LINE\", \"layer\": \"0\", \"layout\": \"Model\", \"start\": {\"x\": 0, \"y\": 0}, \"end\": {\"x\": 100, \"y\": 100} }]\n      }\n    ]\n  }\n}\n```\nNote: `vectorJson`, `layersJson`, and the root-level `entityCount` / `layerCount` fields have been removed. Entities and layer metadata are now nested inside each `sheets[]` entry. Drawing-wide totals are in `result.summary`. `imageUrl` is the first-sheet presigned S3 URL (backward compat); `imageUrls` contains all sheets.",
       "item": [
         {
           "name": "POST /v1/billing/portal",
@@ -1015,7 +1015,7 @@
               {
                 "key": "Stripe-Signature",
                 "value": "t=0,v1=PLACEHOLDER_SIGNATURE",
-                "description": "Real requests are signed by Stripe — replicating this manually requires HMAC-SHA256 over the raw body using the webhook secret."
+                "description": "Real requests are signed by Stripe \u2014 replicating this manually requires HMAC-SHA256 over the raw body using the webhook secret."
               }
             ],
             "body": {
@@ -1033,7 +1033,7 @@
                 "webhook"
               ]
             },
-            "description": "Reference only — Stripe is the real caller. The route consumes the raw body to verify the `Stripe-Signature` header. Sending from Postman will fail signature verification unless you compute a valid HMAC over the body using your local webhook secret.\n\nFor the CADLens → customer job webhook payload shape (sent to the customer's `webhookUrl`), see the `06 — Billing` folder description."
+            "description": "Reference only \u2014 Stripe is the real caller. The route consumes the raw body to verify the `Stripe-Signature` header. Sending from Postman will fail signature verification unless you compute a valid HMAC over the body using your local webhook secret.\n\nFor the CADLens \u2192 customer job webhook payload shape (sent to the customer's `webhookUrl`), see the `06 \u2014 Billing` folder description."
           },
           "response": []
         }

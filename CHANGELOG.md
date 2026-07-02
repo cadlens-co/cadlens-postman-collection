@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.0] — 2026-07-02
+
+### Updated
+- `GET /v1/jobs/:job_id/result` example: added a `HATCH` entity showing the new
+  `patternLines` field (exact hatch pattern geometry) and reliably-populated
+  `patternAngle` / `patternScale`; added `metadata.linetypePatterns` and
+  `metadata.ltscale` to the response shape.
+- Bumped collection `info.version` to `0.3.0`.
+
 ## [0.2.0] — 2026-06-25
 
 ### Updated

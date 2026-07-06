@@ -2,6 +2,11 @@
 
 ## [0.4.0] — 2026-07-06
 
+### Notes (API v1.4.1)
+- API responses are now gzip-compressed via standard content negotiation
+  (`Accept-Encoding`). HTTP clients handle this automatically — no client
+  changes required; large results simply download ~12× faster.
+
 ### Added
 - `POST /v1/parse`: optional `notifyEmail` form field (disabled by default) —
   CADLens emails a job link when the parse finishes and the uploader stopped watching.

@@ -4,7 +4,7 @@
   "name": "CADLens API",
   "description": "Auto-generated Postman collection for the CADLens Node API. Maintained by the postman-agent — re-run whenever routes/validators/controllers change.\n\nQuickstart:\n1. Set `{{baseUrl}}` (defaults to http://localhost:3001).\n2. Complete OAuth via the `01 — OAuth (browser)` folder, then paste the JWT from the `#token=...` redirect fragment into `{{jwt}}`.\n3. Hit `POST /v1/keys` to mint an API key — its `key` and `id` are auto-saved to `{{apiKey}}` / `{{keyId}}`.\n4. Use `POST /v1/parse` to upload a DWG, DXF, DWF, DGN, DWFx, or PDF file — the returned `job_id` is auto-saved to `{{jobId}}`.",
   "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-  "version": "0.3.0"
+  "version": "0.4.0"
  },
  "item": [
   {
@@ -758,6 +758,13 @@
          "type": "text",
          "value": "async",
          "description": "Optional. `async` (default) — returns 202 + job_id immediately. `sync` — long-polls up to 60 s; returns 200 with full result body if the worker finishes in time, otherwise 202 + job_id."
+        },
+        {
+         "key": "notifyEmail",
+         "value": "you@example.com",
+         "type": "text",
+         "disabled": true,
+         "description": "Optional — CADLens emails a job link when the parse finishes and the uploader stopped watching."
         }
        ]
       },
@@ -839,6 +846,14 @@
         {
          "key": "jobId",
          "value": "{{jobId}}"
+        }
+       ],
+       "query": [
+        {
+         "key": "watch",
+         "value": "1",
+         "disabled": true,
+         "description": "Send watch=1 from interactive poll loops — suppresses the notifyEmail when the user watches the job finish live."
         }
        ]
       },

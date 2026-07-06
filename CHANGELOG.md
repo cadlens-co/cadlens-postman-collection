@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.4.0] — 2026-07-06
+
+### Added
+- `POST /v1/parse`: optional `notifyEmail` form field (disabled by default) —
+  CADLens emails a job link when the parse finishes and the uploader stopped watching.
+- `GET /v1/jobs/:jobId`: optional `watch=1` query param (disabled by default) for
+  interactive poll loops; suppresses the notify email when the user watches the
+  job finish live.
+
+### Changed
+- API v1.4.0: `job.completed` webhook payloads now carry per-sheet metadata only
+  (no `entities`/`layers`) plus a `resultUrl` pointing at `GET /v1/jobs/:id/result`
+  for full geometry. Payloads over 256 KB omit `sheets` entirely.
+
 ## [0.3.0] — 2026-07-02
 
 ### Updated

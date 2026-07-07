@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.5.0] — 2026-07-07
+
+### Added
+- `GET /v1/jobs/:job_id/result` example: `metadata.unsupported3DCount` — count
+  of 3D-only entity types (3DSOLID/BODY/SURFACE/REGION/MESH) with no
+  extractable geometry.
+
+### Fixed (API behaviour, no schema change)
+- `metadata.is3D` no longer reports `true` for drawings whose only 3D content
+  is unsupported entity types with an empty 3D scene.
+
 ## [0.4.0] — 2026-07-06
 
 ### Notes (API v1.4.1)

@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.0] — 2026-07-13
+
+### Changed (API Schema v2.0.0 — BREAKING for entity consumers)
+- Added a saved 200 example to `GET /v1/jobs/:jobId/result` showing the Schema
+  v2 envelope: top-level `schemaVersion`/`parserVersion`/`parseInfo`,
+  `summary.statistics` (`byType`/`byCategory`), `sheets[].key`, and entities
+  with `geometry`-grouped coordinates plus `handle`, `category`, `text`,
+  `reference`, `properties`, and always-present `bbox`/`metrics` siblings.
+  Flat entity coordinate fields (`start`, `end`, `vertices`, …) no longer
+  appear at the entity root — read them from `entity.geometry`.
+
 ## [0.5.0] — 2026-07-07
 
 ### Added

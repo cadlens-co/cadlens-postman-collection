@@ -710,7 +710,7 @@
   },
   {
    "name": "04 — Parse",
-   "description": "Submit a CAD file (DWG, DXF, DWF, DGN, DWFx, or PDF) for parsing. Authenticated with the API key bearer token. Use `mode=async` (default) to return immediately with a `job_id`; use `mode=sync` to long-poll up to 60 s — responds 200 with the full result if the worker finishes in time, or 202 + `job_id` on timeout.",
+   "description": "Submit a CAD file (DWG, DXF, DWF, DGN, DWFx, or PDF) for parsing. Authenticated with the API key bearer token. Use `mode=async` (default) to return immediately with a `job_id`; use `mode=sync` to long-poll up to 60 s — responds 200 with the full result if the worker finishes in time, or 202 + `job_id` on timeout. Large files auto-divert: uploads of 10 MB or more (and drawings whose converted geometry turns out huge mid-parse) return 202 immediately with a `message` explaining that parsing continues asynchronously — prefer `mode=async` for large files.",
    "item": [
     {
      "name": "POST /v1/parse",
@@ -757,7 +757,7 @@
          "key": "mode",
          "type": "text",
          "value": "async",
-         "description": "Optional. `async` (default) — returns 202 + job_id immediately. `sync` — long-polls up to 60 s; returns 200 with full result body if the worker finishes in time, otherwise 202 + job_id."
+         "description": "Optional. `async` (default) — returns 202 + job_id immediately. `sync` — long-polls up to 60 s; returns 200 with full result body if the worker finishes in time, otherwise 202 + job_id. Uploads of 10 MB or more (or huge converted geometry) skip the wait and return 202 immediately with a `message` — prefer `async` for large files."
         },
         {
          "key": "notifyEmail",

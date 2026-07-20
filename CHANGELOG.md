@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.7.0] — 2026-07-20
+
+### Added
+- `04 — Parse` example bodies now surface `notifyEmail` alongside `webhookUrl`
+  (both optional form fields on `POST /v1/parse`).
+- New `07 — Webhooks` folder: full CRUD for `/v1/me/webhooks` (list, create,
+  patch `isActive`/`setAsDefault`, delete). JWT-authenticated.
+- New `08 — Activity & Account` folder: `GET /v1/me/logs` (unified activity
+  feed with `source`/`level`/`limit`/`before`/`q` filters) and
+  `DELETE /v1/me/account` (irreversible account deletion). JWT-authenticated.
+- New `09 — Public Marketing` folder: `GET /v1/pricing`, `POST /v1/waitlist`,
+  `POST /v1/contact` — all unauthenticated.
+- `06 — Billing`: added `POST /v1/billing/checkout` (Stripe Checkout session
+  for plan upgrades), JWT-authenticated.
+- New collection variable `webhookId`, auto-saved by `POST /v1/me/webhooks`'s
+  test script for use by the `PATCH`/`DELETE /v1/me/webhooks/:id` requests.
+
+### Changed
+- `GET /v1/jobs/:jobId/result` example response: `parserVersion` bumped from
+  `2.0.0` to `2.2.1` to match the current parser release. `schemaVersion` is
+  unchanged (`2.0.0`) — no response-shape change.
+
 ## API service — 2026-07-17 (no SDK changes required)
 
 - Parser 2.2.1: drawings with ACIS 3DSOLID geometry no longer drop circular
